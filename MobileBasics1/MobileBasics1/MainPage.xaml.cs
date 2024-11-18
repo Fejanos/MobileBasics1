@@ -11,14 +11,16 @@ namespace MobileBasics1
 {
     public partial class MainPage : ContentPage
     {
+        private FormModel Model = new FormModel();
         public MainPage()
         {
             InitializeComponent();
+            this.BindingContext = Model;
         }
 
-        private void button1_Clicked(object sender, EventArgs e)
+        private void PeopleList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            DisplayAlert("Your given content", entry1.Text, "close");
+            DisplayAlert("The selected Person", PeopleList.SelectedItem.ToString(), "Cancel");
         }
     }
 }

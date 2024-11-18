@@ -3,15 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MobileBasics1.MainPage">
 
-    <StackLayout>
-        <Label x:Name="label1"
-               Text="Hello World!"/>
+    <StackLayout Orientation="Vertical">
 
-        <Entry Text="Entry text" x:Name="entry1"/>
+        <Label Text="ID:" />
+        <Entry x:Name="IdText" Text="{Binding CurrentPerson.Id, Mode=TwoWay}"/>
 
-        <Button x:Name="button1"
-                Text="Click here"
-                Clicked="button1_Clicked"/>
+        <Label Text="Name:"/>
+        <Entry x:Name="NameText" Text="{Binding CurrentPerson.Name, Mode=TwoWay}"/>
+
+        <Label Text="Age:"/>
+        <Entry x:Name="AgeText" Text="{Binding CurrentPerson.Age, Mode=TwoWay}"/>
+
+        <Button x:Name="buttonAdd"
+                Text="Add"
+                Command="{Binding AddCommand}"/>
+
+        <ListView x:Name="PeopleList"
+                  ItemsSource="{Binding People, Mode=OneWay}"
+                  ItemSelected="PeopleList_ItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Label Text="{Binding Name}"/>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
     </StackLayout>
 
 </ContentPage>
