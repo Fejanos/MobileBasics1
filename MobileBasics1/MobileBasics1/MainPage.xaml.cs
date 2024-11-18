@@ -15,5 +15,10 @@ namespace MobileBasics1
         {
             InitializeComponent();
         }
+
+        private void button1_Clicked(object sender, EventArgs e)
+        {
+            DisplayAlert("Your given content", entry1.Text, "close");
+        }
     }
 }
